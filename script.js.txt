@@ -1,0 +1,32 @@
+document.getElementById('reminderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('medicineName').value;
+    const time = document.getElementById('reminderTime').value;
+
+    addReminder(name, time);
+    saveReminders();
+    this.reset();
+});
+
+function addReminder(name, time) {
+    const li = document.createElement('li');
+    li.textContent = `${name} at ${time}`;
+    document.getElementById('reminderList').appendChild(li);
+}
+
+function saveReminders() {
+    const reminders = [];
+    document.querySelectorAll('#reminderList li').forEach(li => reminders.push(li.textContent));
+    localStorage.setItem('reminders', JSON.stringify(reminders));
+}
+
+function loadReminders() {
+    const reminders = JSON.parse(localStorage.getItem('reminders')) || [];
+    reminders.forEach(reminder => {
+        const li = document.createElement('li');
+        li.textContent = reminder;
+        document.getElementById('reminderList').appendChild(li);
+    });
+}
+
+loadReminders();
