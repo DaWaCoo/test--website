@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medicine Reminder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Medicine Reminder</h1>
+    <form id="reminderForm">
+        <input type="text" id="medicineName" placeholder="Medicine Name" required>
+        <input type="time" id="reminderTime" required>
+        <button type="submit">Add Reminder</button>
+    </form>
+    <ul id="reminderList"></ul>
+    <script src="script.js"></script>
+</body>
+</html>
